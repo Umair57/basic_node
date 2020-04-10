@@ -6,8 +6,8 @@ const app = express();
 
 const users = require("./routes/api/users");
 
-// app.set('views', __dirname + '/views');
-// app.engine('html', require('ejs').renderFile);
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
 
 // Bodyparser middleware
 app.use(
@@ -30,7 +30,7 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 
-app.use("/", function (req, res) {
+app.get("/", function (req, res) {
   res.render("index.html");
 });
 
